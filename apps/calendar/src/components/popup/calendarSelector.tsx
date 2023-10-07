@@ -27,15 +27,23 @@ export function CalendarSelector({ calendars, selectedCalendarId, formStateDispa
 
   const selectedCalendar = calendars.find((calendar) => calendar.id === selectedCalendarId);
   const { backgroundColor = '', name = '' } = selectedCalendar ?? {};
+  var buttonStyle = {
+    width: '402px',
+    display: 'flex',
+    alignItems: 'center' 
+  };
+  var nameStyle = {
+    flexGrow: 1, 
+  };
 
   const changeIndex = (index: number) =>
     formStateDispatch({ type: FormStateActionType.setCalendarId, calendarId: calendars[index].id });
 
   return (
     <PopupSection onClick={toggleDropdown} classNames={classNames.popupSection}>
-      <button type="button" className={classNames.popupSectionItem}>
-        <span className={classNames.dotIcon} style={{ backgroundColor }} />
-        <span className={classNames.content}>{name}</span>
+      <button type="button" className={classNames.popupSectionItem} style={buttonStyle}>
+        <span className={classNames.dotIcon} style={{ backgroundColor }}  />
+        <span className={classNames.content} style={flex-grow}>{name}</span>
         <span className={cls('icon', 'ic-dropdown-arrow', { open: isOpened })} />
       </button>
       {isOpened && (
